@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML BASIC1</title>
+    <script></script>
+</head>
+<!-- <body style="background-color: red;"> -->
+<body>
+<!-- <body background="images/스크린샷 2025-01-02 111039.png">     -->
+    <h2>글자 styling 예제</h2>
+    <p style="background-color: red;">1. 배경색 변경</p>
+    <p style="color: blue;">2. 글자색변경</p>
+    <p style="font-size: 20px;">3. 글자크기 변경</p>
+    <p style="color: green; font-size: 25px; text-align: center;">4. 복합 스타일링</p>
+
+    <h2>link와 이미지 삽입</h2>
+    <!-- _blank는 새탭에서 열기 -->
+     <div>
+         <!-- a태그는 줄바꿈 없는 태그 -->
+         <a href="https://naver.com" target="_blank">네이버</a>
+     </div>
+     <div>
+         <a href="https://naver.com" target="_blank">
+            <!-- alt는 이미지가 깨졌을 때 대체문자열을 의미, 시각장애인용 리더기에서 대체문자열을 읽어줌 -->
+             <img src="https://img.animalplanet.co.kr/news/2021/02/06/700/r74z5n3f22jhb2s02ur4.jpg
+             " width="300" height="200" style="border: 3px solid black;" alt="고양이">
+         </a> 
+     </div>
+     <h2>리스트(ol-순서가 있는, ul-순서가 없는 리스트)</h2>
+     <ol style="list-style-type: upper-roman;">
+        <li>아이템A</li>
+        <li>아이템B</li>
+        <li>아이템C</li>
+     </ol>
+     <ul style="list-style-type: square;">
+        <li>아이템A</li>
+        <li>아이템B</li>
+        <li>아이템C</li>
+     </ul>
+
+     <h2>테이블예제</h2>
+     <table border="1" style="border-collapse: collapse;">
+        <caption>table명</caption>
+        <thead>
+            <tr>
+                <th>컬럼1</th>
+                <th>컬럼2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>내용1</th>
+                <th>내용2</th>
+            </tr>
+            <tr>
+                <th>내용a</th>
+                <th>내용b</th>
+            </tr>
+        </tbody>
+     </table>
+
+     <!-- 테이블 만들기 실습 -->
+      <!-- 테이블 명: post, 컬럼:id, title, contents, email -->
+       <table border="1" style="border-collapse: collapse;">
+        <caption>post</caption>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>title</th>
+                <th>contents</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <th>ㅎ2</th>
+                <th>반가워요</th>
+                <th>asd@naver.com</th>
+            </tr>
+            <tr>
+                <th>2</th>
+                <th>ㅎ2</th>
+                <th>반가워요</th>
+                <th>2asd@naver.com</th>
+            </tr>
+            <tr>
+                <th>3</th>
+                <th>ㅂ2</th>
+                <th>잘있어요</th>
+                <th>3asd@naver.com</th>
+            </tr>
+        </tbody>
+       </table>
+</body>
+</html>
