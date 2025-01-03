@@ -31,6 +31,14 @@
             color: yellow;
         }
     </style>
+    <script>
+        function updateDemo1(){
+            document.getElementById("demo1").innerHTML="hello world"
+        }
+        document.getElementById("load1").innerHTML="ㅎ22load1"
+    </script>
+    <!-- 외부 js import시에 아래와 같이 선언 -->
+    <script src = "js/myjs.js"></script>
 </head>
 <body>
     <!-- css 적용방법 3가지 : 인라인, 내부스타일, 외부스타일 -->
@@ -59,6 +67,25 @@
         <h5>첫 번째 단락</h5>
         <section><p>두 번째 단락</p></section>
     </div>
+
+    <h2>javascript예시</h2>
+    <p id="demo1">변경될 내용1</p>
+    <button onclick="updateDemo1()">변경버튼1</button>
+    <p id="demo2">변경될 내용2</p>
+    <button onclick="updateDemo2()">변경버튼2</button>
+    <p id="demo3">변경될 내용3</p>
+    <button onclick="updateDemo3()">변경버튼3</button>
+
+    <h2>js 로드 순서</h2>
+    <p id="load1">js 로드1</p>
+    <p id="load2">js 로드2</p>
+
+    <script>
+        document.getElementById("load2").innerHTML="ㅎ22load2"
+        function updateDemo2(){
+            document.getElementById("demo2").innerHTML="ㅎ22"
+        }
+    </script>
 
 
 </body>
