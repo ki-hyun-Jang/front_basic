@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 기본 함수 호출</title>
+    <script>
+        function basicFunction(){
+            alert("Hello world")
+        }
+
+        const variableFunction1 = function(){
+            alert("함수를 변수로 세팅")
+        }
+
+        // 실행문이 한 줄밖에 없을 때는 아래와 같이 중괄호 생략가능
+        const variableFunction2 = ()=> alert("함수를 변수로 세팅")
+        
+        function returnFunction(){
+            alert(makeString())
+            console.log(makeString2())
+            console.log(makeString3())
+        }
+
+        function makeString(){
+            return "hello world"
+        }
+
+        const makeString2 = () => { return "hello world2"}
+        const makeString3 = () => "hello world3"
+
+        function paramFunction(a,b){
+            alert(a+b)
+        }
+
+        // 매개변수에 default 값 세팅 가능
+        function paramFunction2(name='홍길동'){
+            alert('이름은 '+name+'입니다.')
+        }
+        
+        function paramFunction3(...numbers){
+            let resuslt = 0
+            numbers.forEach(element => {
+                resuslt+=element
+            });
+            alert(resuslt)
+        }
+
+        function functionWithException(){
+            try{
+                example()
+            }catch(e){
+                console.log(e)
+            }
+            console.log("코드실행")
+
+            const response = {data:{id:1, name: "kim"}}
+        }
+
+        function showPerson(){
+            const person = createPerson('hong',20)
+            console.log(person.printPerson())
+        }
+
+        function createPerson(name, age){
+            return {
+                name:name,
+                age:age,
+                printPerson:function(){
+                    return "이름은 " + this.name + " 나이는 " + this.age
+                }
+            }
+        }
+
+        function reload(){
+            window.location.reload()
+        }
+
+        function locationMove(){
+            window.location.href = "http://naver.com"
+        }
+    </script>
+</head>
+<body>
+    <h2>js 기본함수 호출</h2>
+    <button onclick="basicFunction()">함수 호출 basic</button>
+    <button onclick="variableFunction1()">변수 함수 호출</button>
+    <button onclick="variableFunction2()">변수 함수 호출2</button>
+    <button onclick="returnFunction()">리턴이 있는 함수 호출</button>
+    <button onclick="paramFunction(1,2)"> 매개변수가 있는 함수 호출</button>
+    <button onclick="paramFunction2()"> 매개변수가 있는 함수 호출2</button>
+    <button onclick="paramFunction3(1,2,3,4,5)"> 매개변수가 있는 함수 호출3</button>
+
+    <h2>js 예외처리</h2>
+    <button onclick="functionWithException()">예외처리함수 호출</button>
+
+    <button onclick="showPerson()">person 객체 생성 및 조회</button>
+
+    <h2>window 객체</h2>
+    <button onclick="reload()">화면 새로고침</button>
+    <button onclick="locationMove()">화면 이동</button>
+
+    <h2>event listner 객체 활용</h2>
+    <button id="button1">버튼1</button>
+    <button onclick="scrollEvent()">스크롤링시 이벤트 리스너 동작</button>
+
+    <h2>html 요소 동적으로 생성</h2>
+    <button onclick="addItem()"> 항목 추가</button>
+    <div id="target">
+        <input type="text"> <br>
+    </div>
+
+    <script>
+        function addItem(){
+            let divElement = document.getElementById('target')
+            divElement.innerHTML += "<input type='text'> <br>"
+        }
+
+        const button = document.getElementById("button1")
+        if (button){
+            // click이라는 약속된 문자열을 동작의 트리거로 사용
+            // 즉, 해당 버튼이 클릭되면 매개변수로 주어지는 함수가 실행
+            button.addEventListener('click', ()=>alert('hello world'))
+        }
+
+        function scrollEvent(){
+            window.addEventListener('scroll', function(){ console.log("hello world")})
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js json</title>
+</head>
+<body>
+    <table border="1" style="border-collapse: collapse; margin: auto;">
+        <thead>
+            <tr>
+                <td>name</td>
+                <td>age</td>
+                <td>score</td>
+            </tr>
+        </thead>
+        <tbody id="target">
+            <tr>
+                <td id="name"></td>
+                <td id="age"></td>
+                <td id="score"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const jsonText = '{"name":"Alice","age":25,"score":85}'
+        // json을 javascript 객체로 parsing(역직렬화)
+        const obj = JSON.parse(jsonText);
+        document.getElementById("name").innerHTML = obj.name 
+        document.getElementById("age").innerHTML = obj.age
+        document.getElementById("score").innerHTML = obj.score
+
+        const jsonText2 = '[{"name":"Alice","age":25,"score":85},{"name":"Bob","age":28,"score":92},{"name":"Charlie","age":32,"score":88}]'
+        const obj2 = JSON.parse(jsonText2);
+        let tbodyElement = document.getElementById('target')
+        
+        obj2.forEach(element => {
+            // 문자열에 js변수를 끼워넣을 때 ` 백틱에 ${}을 활용
+            tbodyElement.innerHTML += "<tr>"+"<td>"+element.name+"</td>"+"<td>"+element.age+"</td>"+"<td>"+element.score+"</td>"+"</tr>" 
+        });
+
+        // json 직렬화
+        console.log(obj2)
+        const jsonText3 = JSON.stringify(obj2)
+        console.log(jsonText3)
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <script>
+        function calculation(x,y){
+            const calcType = document.getElementById("calculationType").value
+            let result = 0
+            const a = Number(x)
+            const b = Number(y)
+            if (calcType=="addition"){
+                result = a+b
+            }else if(calcType=="subtraction"){
+                result = a-b
+            }else if(calcType=="multiplication"){
+                result = a*b
+            }else{
+                result = a/b
+            }
+            document.getElementById('result').innerHTML = result
+        }
+    </script>
+</head>
+<body>
+    <h2>계산 프로그램 구현</h2>
+    <div>
+        사칙연산선택
+        <select id="calculationType">
+            <option value="addition">덧셈</option>
+            <option value="subtraction">뺄셈</option>
+            <option value="multiplication">곱셈</option>
+            <option value="division">나눗셈</option>
+        </select>
+        <input type="text" id="a">
+        <input type="text" id="b">
+        <button onclick="calculation(document.getElementById('a').value, document.getElementById('b').value)">연산실행</button>
+    </div>
+    <div id ="result">결과값</div>
+</body>
+</html>

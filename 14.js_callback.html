@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback</title>
+</head>
+<body>
+    <button onclick="basicFunction()">일반 함수 예제</button>
+    <button onclick="callbackFunction1()">콜백 함수 예제1</button>
+    <button onclick="callbackFunction2()">콜백 함수 예제2</button>
+    <button onclick="callbackFunction3()">콜백 함수 예제3(비동기실행)</button>
+
+    <script>
+        function basicFunction(){
+            alert("hello world")
+        }
+
+        function callbackFunction1(){
+            userInput((a)=>{console.log(a)})
+        }
+
+        function userInput(callback){
+            callback("hongildong")
+        }
+
+        function callbackFunction2(){
+            const number = [1,2,3,4,5]
+            number.forEach((a)=>console.log(a))
+        }
+
+        function callbackFunction3(){
+            // setTimeout은 js에서 대표적인 비동기함수 중 하나
+            setTimeout(()=>console.log("hello world"),2000)
+            console.log("hello world2")
+            console.log("hello world3")
+        }
+    </script>
+</body>
+</html>

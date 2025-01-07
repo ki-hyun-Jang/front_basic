@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js basic</title>
+    <script>
+        function showObject(){
+            let person = {name: "hong", email:"hong@naver.com", age:"30"}
+            // 객체 전체조회
+            console.log(person);
+            // 객체 특정 요소 조회 방법1 : person.name
+            console.log(person.name);
+            person.name = "kim"
+            console.log(person.name);
+
+            // 객체 특정 요소 조회 방법2: person['name']
+            console.log(person['name'])
+
+            // Object.keys(객체명): 객체의 키를 배열형태로 반환
+            const keyArr = Object.keys(person)
+            for(let i = 0; i<keyArr.length; i++){
+                console.log(person[keyArr[i]])
+            }
+            keyArr.forEach(k=> console.log(person[k]))
+        }
+
+        function makeObject(){
+            // 방법1: 리터럴 방식으로 세팅
+            let person = {name: "hong", email:"hong@naver.com", age:"30"}
+
+            // 방법2: 동적으로 키와 값을 추가
+            let person2 = {}
+            person2.name = 'kim'
+            person2.email = 'abc@naver.com'
+            person2.age = 30
+            person2.password = '1234';
+            console.log(person2)
+
+            // 단축 속성명 방식: key와 value값이 동일하게 사용될 때 간편하게 객쳋 생성하는 방식
+            const name = 'lee'
+            const age = 30
+            const person3 = {name, age}
+            console.log(person3)
+
+            const obj1 = {key1: 'value1'}
+            const obj2 = {obj1}
+            console.log(obj2)
+
+            // 스프레드 문법 ...키워드를 통해 obj3객체의 요소를 obj4에서 사용.
+            const obj3 = {a:1, b:2}
+            const obj4 = {...obj3, c:3}
+        }
+        function makeArray(){
+            let fruits = ['사과','바나나','오렌지']
+            // 배열요소 마지막추가: push
+            fruits.push('포도')
+            console.log(fruits)
+            // 배열요소 마지막 꺼내기 pop
+            console.log(fruits.pop())
+            console.log(fruits)
+            // 배열의 접근: 배열명[index]
+            console.log(fruits[0])
+            console.log(fruits)
+
+            // for문 기본
+            for(let i=0; i<fruits.length; i++){
+                console.log(fruits[i])
+            }
+            
+            // foreach문
+            for(const f of fruits){
+                console.log(f)
+            }
+
+            // 함수형프로그래밍 foreach
+            fruits.forEach(f=>console.log(f))
+            fruits.forEach((a,b)=> console.log(a,b))
+
+            // filter
+            const nums = [1,2,3,4,5,6]
+            const newNums = nums.filter(a=> a%2==0)
+            console.log(newNums)
+
+            //map
+            const newNums2 = nums.map(a=>a*a)
+            console.log(newNums2)
+
+            // 스프레드 문법
+            const newNums3 = [...nums,7,8,9]
+            console.log(newNums3)
+        }
+
+        function makeObjectArray(){
+            let objArr = []
+
+            let obj1 = {name:'lee', age:24}
+            
+            const nmae = "jang"
+            const age = 20
+            let obj2 ={name,age}
+
+            let obj3 ={}
+            obj3.name = 'kim'
+            obj3.age = 233
+            objArr.push(obj1)
+            objArr.push(obj2)
+            objArr.push(obj3)
+
+            console.log(objArr)
+            newArr = objArr.filter(p=>p.age>=30)
+            console.log(newArr)
+
+            // for문을 통한 배열 내의 객체 요소 원본 변경
+            // 원본 변경을 지양함
+            // for(const i = 0; i<objArr.length; i++){
+            //     objArr[i].email = "test@naver.com"
+            // }
+
+            const newArr2 = objArr.map(a=>{return {...a, email:"test@naver.com"}})
+            console.log(newArr2)
+        }
+
+        function convertType(){
+            let numStr = "10"
+            let str = "hello"
+            let num1 = Number(numStr);
+            console.log(typeof num1)
+            num1 = String(num1);
+            console.log(typeof num1)
+            // NaN(not a number)이 담김
+            let num2 = Number(str)
+            console.log(num2)
+
+            // ==, === (타입까지 체크)
+            console.log(10=='10') //true
+            console.log(10==='10') //flase
+
+            let var1 //undefined
+            let var2 = null //null
+            console.log(var1==var2) //true
+            console.log(var1===var2) //false
+        }
+    </script>
+</head>
+<body>
+    <h2>js객체</h2>
+    <button onclick="showObject()">객체 조회</button>
+    <button onclick="makeObject()">객체 생성</button>
+    <button onclick="makeArray()">배열 생성</button>
+    <button onclick="makeObjectArray()">배열 객체 생성</button>
+    <button onclick="convertType()">형변환</button>
+</body>
+</html>
