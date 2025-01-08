@@ -3,25 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판 서비스</title>
+    <title>게시판서비스</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-        <a href="" class="navbar-brand mx-auto">게시판서비스</a>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a href=".../author/author_list.html" class="nav-link">회원목록</a>
-            </li>
-            <li class="nav-item">
-                <a href="post_list.html" class="nav-link">게시글목록</a>
-            </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg bg-light navbar-light">
+        <div class="d-flex w-100">
+            <!-- 왼쪽 정렬 -->
+            <a href="../post/post_list.html" class="navbar-brand ml-0">&nbsp✨게시판서비스</a>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="../author/author_list.html" class="nav-link">회원목록</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../author/author_detail.html" class="nav-link">회원상세조회</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../post/post_list.html" class="nav-link">게시글목록</a> 
+                </li>
+                <li class="nav-item">
+                    <a href="../post/post_detail.html" class="nav-link">게시글상세조회</a> 
+                </li>
+            </ul>
+        </div>
     </nav>
-    
+
     <div class="container">
-        <div class="page-header"><h3>글쓰기</h3></div>
+        <div class="page-hedder"><h3>글쓰기</h3></div>
         <form>
             <div class="form-group">
                 <label for="title">제목</label>
@@ -29,24 +40,25 @@
             </div>
             <div class="form-group">
                 <label for="contents">내용</label>
-                <textarea name="contents" class="form-control" id="contents" rows="10" placeholder="내용을 입력해주세요."></textarea>
+                <textarea name="contents" class="form-control" id="contents" rows="10" placeholder="여기에 글을 작성하세요"></textarea>
             </div>
-            <button type="button" onclick="postData()" class="btn btn-secondary">제출</button>
+            <button type="button" class="btn btn-secondary" onclick="postData()">제출</button>
         </form>
     </div>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        async function postData(){
-            const titleData = document.getElementById('title').value
-            const contentData = document.getElementById('contents').value
-            const formData = new FormData()
-            formData.append('title', titleData)
-            formData.append('contents',contentData)
-            const result = await axios.post('http://localhost:8081/post/register2',formData)
-            alert('입력완료')
-            window.location.href = "post_list.html"
+        async function postData() {
+            const title = document.getElementById('title').value;
+            const contents = document.getElementById('contents').value;
+            // formdata형식 : title=helloworld&contents=hello world is ...
+            // js코드를 통해 title, contents 등을 검증(검사)할 수 있어서, js를 통한 form형식 데이터 조립 가능.
+            const serverData = new FormData();
+            serverData.append('title',title);
+            serverData.append('contents',contents);
+            console.log(serverData);
+            await axios.post('http://localhost:8081/post/register2', serverData);
+            window.location.href = "post_list.html";
         }
     </script>
-    
 </body>
 </html>

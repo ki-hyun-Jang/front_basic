@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판서비스</title>
+    <title>author_detail</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css ">
     <style>
+
     </style>
 </head>
 <body>
@@ -33,8 +34,8 @@
     </nav>
 
      <div class="container">
-        <div class="page-header"><h3>게시글 상세조회</h3></div>
-        <input type="text" name="" id="postId">
+        <div class="page-header"><h3>회원가입 상세조회</h3></div>
+        <input type="text" name="" id="AuthorId">
         <button class="btn btn-primary" onclick="serverData()">조회</button>
         <table class="table">
             <tr>
@@ -42,16 +43,16 @@
                 <td id="inputId"></td>
             </tr>
             <tr>
-                <td>title</td>
-                <td id="title"></td>
+                <td>name</td>
+                <td id="name"></td>
             </tr>
             <tr>
-                <td>contents</td>
-                <td id="contents"></td>
+                <td>password</td>
+                <td id="password"></td>
             </tr>
             <tr>
-                <td>userId</td>
-                <td id="userId"></td>
+                <td>email</td>
+                <td id="email"></td>
             </tr>
         </table>
     </div>
@@ -59,13 +60,13 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         async function serverData(){
-            const postId = document.getElementById("postId").value;
-            const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`);
-            const post = response.data;
-            document.getElementById("inputId").innerHTML = post.id;
-            document.getElementById("title").innerHTML = post.title;
-            document.getElementById("contents").innerHTML = post.body;
-            document.getElementById("userId").innerHTML = post.userId;
+            const authorId = document.getElementById("authorId").value;
+            const response = await axios.get(`https://jsonplaceholder.typicode.com/author/${authorId}`);
+            const author = response.data;
+            document.getElementById("inputId").innerHTML = author.id;
+            document.getElementById("name").innerHTML = author.name;
+            document.getElementById("password").innerHTML = author.password;
+            document.getElementById("email").innerHTML = author.email;
         }
     </script>
 </body>

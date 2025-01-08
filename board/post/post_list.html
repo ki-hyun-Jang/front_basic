@@ -3,29 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판 서비스</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>게시판서비스</title>
+    <style>
+    </style>
+    
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-        <a href="" class="navbar-brand mx-auto">게시판서비스</a>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a href=".../author/author_list.html" class="nav-link">회원목록</a>
-            </li>
-            <li class="nav-item">
-                <a href="post_list.html" class="nav-link">게시글목록</a>
-            </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg bg-light navbar-light">
+        <div class="d-flex w-100">
+            <!-- 왼쪽 정렬 -->
+            <a href="../post/post_list.html" class="navbar-brand ml-0">&nbsp✨게시판서비스</a>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="../author/author_list.html" class="nav-link">회원목록</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../author/author_detail.html" class="nav-link">회원상세조회</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../post/post_list.html" class="nav-link">게시글목록</a> 
+                </li>
+                <li class="nav-item">
+                    <a href="../post/post_detail.html" class="nav-link">게시글상세조회</a> 
+                </li>
+            </ul>
+        </div>
     </nav>
 
     <div class="container">
-        <div class="page-header"><h3>게시글목록</h3></div>
+        <div class="page-hedder"><h3>게시글 목록</h3></div>
         <div class="float-end">
-                <a href="post_register.html" class="btn btn-primary">글쓰기</a> 
-        </div>
+            <button class="btn btn-primary">
+                <a style="color: #fff; text-decoration: none;" href="post_register.html ">글쓰기</a>
+            </button>
 
+        
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -37,18 +53,16 @@
 
             </tbody>
         </table>
-        
     </div>
-
     <script>
         async function serverData() {
-            const response = await axios.get('http://localhost:8081/post/list')
-            const responseData = response.data
-            responseData.forEach(element => {
-                document.getElementById('bodyData').innerHTML += `<tr><th>${element.id}</th><th>${element.title}</th></tr>`
-            });
+            const response = await axios.get('http://ec2-13-125-33-207.ap-northeast-2.compute.amazonaws.com:8081/post/list');
+            console.log(response);
+            for (let i = 0; i < response.data.length; i++) {
+                document.getElementById('bodyData').innerHTML += `<tr><td>${response.data[i].id}</td><td>${response.data[i].title}</td></tr>`;
+            }
         }
-        serverData()
+        serverData();
     </script>
 </body>
 </html>

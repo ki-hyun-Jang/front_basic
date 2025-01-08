@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입창</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light navbar-light">
+        <div class="d-flex w-100">
+            <!-- 왼쪽 정렬 -->
+            <a href="../post/post_list.html" class="navbar-brand ml-0">&nbsp✨게시판서비스</a>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="../author/author_list.html" class="nav-link">회원목록</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../author/author_detail.html" class="nav-link">회원상세조회</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../post/post_list.html" class="nav-link">게시글목록</a> 
+                </li>
+                <li class="nav-item">
+                    <a href="../post/post_detail.html" class="nav-link">게시글상세조회</a> 
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" style="display: flex; justify-content: center; align-items: flex-start; height: 100vh; padding-top: 50px;">
+        <form action="http://localhost:8081/author/register2" method="author" enctype="application/x-www-form-urlencoded" 
+            style="max-width: 600px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background: #f9f9f9; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            
+            <h2 style="text-align: center; margin-bottom: 20px;">회원가입</h2>
+        
+            <div class="form-group" style="margin-bottom: 10px; display: flex; align-items: center;">
+                <label for="name" style="width: 120px; margin-right: 10px;">이름</label>
+                <input type="text" class="form-control" name="name" id="name" 
+                    style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+    
+            <div class="form-group" style="margin-bottom: 10px; display: flex; align-items: center;">
+                <label for="password" style="width: 120px; margin-right: 10px;">비밀번호</label>
+                <input type="password" class="form-control" name="password" id="password" 
+                    style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+    
+            <div class="form-group" style="margin-bottom: 10px; display: flex; align-items: center;">
+                <label for="email" style="width: 120px; margin-right: 10px;">이메일</label>
+                <input type="email" class="form-control" name="email" id="email" 
+                    style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+    
+            <button type="submit" class="btn btn-secondary" 
+                style="width: 100%; padding: 10px; background-color: #ffb114; border: none; border-radius: 5px; color: white; font-size: 16px;">
+                제출
+            </button>
+        </form>
+    </div>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        async function authorData() {
+            const name = document.getElementById('name').value;
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value;
+            const data = {name,password,email};
+            const result = await axios.author('http://localhost:8081/author/register1', data);
+            console.log(result.data);
+            window.location.href = "author_list.html";
+        }
+    </script>
+</body>
+</html>
